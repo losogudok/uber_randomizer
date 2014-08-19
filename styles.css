@@ -1,0 +1,34 @@
+@import "http://webfonts.ru/import/ostrich.css";
+body {
+	font-family: 'Ostrich Sans';
+}
+
+.main-section {
+	height: 100%;
+	padding: 20px;
+	color: rgba(0,0,0, 0.7);
+}
+
+h1 {
+	font-size: 48px;
+	/*margin-bottom: 20px;*/
+}
+
+h2 {
+	font-size: 30px;
+	margin-bottom: 70px;
+}
+.circle {
+	border-radius: 50%;
+	width: 200px;
+	color: white;
+	height: 200px;
+	background-color: rgba(255, 21, 21, 0.7);
+	text-align: center;
+	margin: auto;
+	color: white;
+}
+.circle-phrase {
+	line-height: 200px;
+	font-size: 48px;
+} 
