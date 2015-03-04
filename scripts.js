@@ -2,11 +2,11 @@
 
 
 const CLIENT_ID = "BTQYSYTNCW45PVNFUXYRXPCJYOYA3U4LRO5HHL2CBDX3DVMX";
-const CLIENT_SECRET = "KEJ5US3VF5H5T0ZKPKECKFQURD1AUVGKGTL5SRCAT5T44ZGT"
+const CLIENT_SECRET = "KEJ5US3VF5H5T0ZKPKECKFQURD1AUVGKGTL5SRCAT5T44ZGT";
 const VERSION = "20140818";
-const URL = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+
-			"&client_secret="+CLIENT_SECRET+"&v="+VERSION;
+const URL = "https://api.foursquare.com/v2/venues/explore?client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=" + VERSION;
 
+var mainSection = document.querySelector('.main-section');
 var btn = document.querySelector('#btnEat');
 var circle = document.querySelector('.circle');
 var result = document.querySelector('.result');
@@ -21,6 +21,7 @@ circle.addEventListener('touchend', makeRandom, true);
 // Handlers
 function makeRandom() {
 	console.log('randomizing!');
+	circle.classList.add('loading');
 	getCurrentLocation()
 		.then(performAjaxRequest, null)
 		.then(function(data){
@@ -84,10 +85,32 @@ function pickRandomPlace(places) {
 
 function showResult(data) {
 	circle.classList.add('hide');
-	result.classList.add('show');
+	mainSection.classList.add('hide');
+	result.classList.remove('hide');
 	var venue = data.venue;
 	name.textContent = venue.name;
 	address.textContent = venue.location.address;
+	createMap(venue.location.lat, venue.location.lng, venue.name);
+}
+
+function createMap(lat, lng, name) {
+
+	  var myLatlng = new google.maps.LatLng(lat,lng);
+	  var mapOptions = {
+	    zoom: 18,
+	    center: myLatlng
+	  }
+	  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+	  var marker = new google.maps.Marker({
+	      position: myLatlng,
+	      map: map,
+	      title: name
+	  });
+}
+
+function fadeOutHeaer() {
+
 }
 
 })(document, window);

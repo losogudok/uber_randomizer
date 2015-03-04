@@ -12,11 +12,17 @@ var server = http.createServer(function(req, res){
 			res.setHeader("Content-Type", "text/css");
 			fs.createReadStream('styles.css').pipe(res);	
 			break;
+        case '/reset.css':
+            res.setHeader("Content-Type", "text/css");
+            fs.createReadStream('styles.css').pipe(res);
+            break;
 		case '/scripts.js':
 			res.setHeader("Content-Type", "application/javascript");
-			fs.createReadStream('scripts.js').pipe(res);	
+			fs.createReadStream('scripts.js').pipe(res);
+            break;
+        default:
+            res.end();
 	}
-	
 });
 
 server.listen(3000, function(){
