@@ -8,6 +8,7 @@ html {
 body {
 	font-family: 'Ostrich Sans', sans-serif;
     height: 100%;
+    margin: 0;
 }
 /* HELPERS */
 
@@ -102,7 +103,7 @@ h2 {
 } 
 .result {
     height: 100vh;
-    padding: 20px 0;
+    padding: 10px 0;
     font-family: 'Bebas Neue', sans-serif;
     font-weight: 300;
     display: flex;
@@ -117,7 +118,7 @@ h2 {
     margin-bottom: 20px;
     color: #333;
 }
-#map-canvas {
+.map-canvas {
     width: 100%;
     flex-grow: 1;
     margin: 0;
